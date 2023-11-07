@@ -1,6 +1,9 @@
 package de.bredex.javaproject.objects.invoice;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,5 +34,12 @@ public class InvoiceController {
 
         this.customerRepository.save(customer);
         return invoiceDb;
+    }
+
+    @GetMapping("/invoices")
+    public List<Invoice> getInvoice() {
+
+        return this.invoiceRepository.findAll();
+
     }
 }
