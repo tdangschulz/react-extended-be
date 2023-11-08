@@ -30,4 +30,9 @@ public class ProductController {
     public void deleteProduct(@PathVariable int id) {
         this.productRepository.deleteById(id);
     }
+
+    @GetMapping("/products/{id}")
+    public Product getProduct(@PathVariable int id) {
+        return this.productRepository.findById(id).get();
+    }
 }
