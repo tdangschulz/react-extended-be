@@ -24,7 +24,7 @@ public class Invoice {
     @Column(name = "id")
     private int id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 
@@ -37,7 +37,7 @@ public class Invoice {
     @Column(name = "is_premium_customer")
     private boolean isPremiumCustomer;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
 
