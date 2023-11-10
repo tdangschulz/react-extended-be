@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import de.bredex.javaproject.objects.invoice.Invoice;
 import de.bredex.javaproject.objects.user.User;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -25,7 +26,7 @@ public class Customer extends User {
     private double turnoverSoFar = 0.00;
 
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE)
     private List<Invoice> invoices;
 
     public Customer() {

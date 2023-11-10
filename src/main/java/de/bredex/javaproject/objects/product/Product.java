@@ -1,11 +1,16 @@
 package de.bredex.javaproject.objects.product;
 
+import java.util.List;
+
+import de.bredex.javaproject.objects.invoice.Invoice;
 import de.bredex.javaproject.utils.Category;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,6 +32,9 @@ public class Product {
     @Enumerated(EnumType.STRING)
     @Column(name = "category")
     private Category category;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Invoice> invoices;
 
     public Product() {
 
